@@ -19,6 +19,7 @@ function eventListeners() {
     message.addEventListener('blur', validateField);
 
     // Send email & reset button
+    sendEmailForm.addEventListener('submit', sendEmail)
     resetBtn.addEventListener('click', resetForm);
 }
 
@@ -69,7 +70,7 @@ function validateLength(field) {
 }
 
 
-// validate email checks @ in the value
+// Validate email checks @ in the value
 function validateEmail(field) {
     if (field.value.indexOf('@') !== -1) {
         field.style.borderBottomColor = 'green';
@@ -84,4 +85,24 @@ function validateEmail(field) {
 // Reset the form
 function resetForm() {
     sendEmailForm.reset();
+}
+
+
+// Send thr form
+function sendEmail(e) {
+    e.preventDefault();
+    const spinner = document.querySelector('#spinner');
+    const sendImg = document.querySelector('#sent');
+
+    spinner.style.display = "block";
+
+    // hide spinner then show second gif
+    setTimeout(function(){
+        spinner.style.display = "none";
+        sendImg.style.display = "block";
+        setTimeout(function() {
+            sendImg.style.display = "none";
+            sendEmailForm.reset();
+        }, 1000 );
+    }, 2000 );
 }
