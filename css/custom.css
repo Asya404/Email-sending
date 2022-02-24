@@ -75,9 +75,8 @@ input:hover, input:focus {
 }
 
 .input-field>input:focus~label {
-    transform: translateY(-10px);
+    transform: translateY(-15px);
     color: #26a69a;
-    ;
 }
 
 .input-field>label {
